@@ -1,0 +1,273 @@
+/* Images created by: https://unsplash.com/@pawel_czerwinski */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap");
+
+/* Variables - Light Mode */
+
+:root {
+  --bg-page: linear-gradient(
+    -45deg,
+    #c9def4,
+    #d8ded6,
+    #f6cfbe,
+    #d3f3f1,
+    #f0ebc0
+  );
+  --bg-player: #dbdbd1;
+  --font-song: #393105;
+  --font: #6b705c;
+  --progress-bg: #f4f3ee;
+  --progress-bar: #ff8500;
+  --buttons: #6b705c;
+  --sun: #ff8500;
+  --moon: #6b705c;
+  --player-shadow: 0 15px 30px 5px rgb(0 0 0 / 0.3);
+  --image-shadow: 0 15px 30px 5px rgb(0 0 0 / 0.5);
+  --switch: #6b705c;
+  --slider: #f4f3ee;
+}
+
+/* Variables - Dark Mode */
+
+[data-theme="dark"] {
+  --bg-page: linear-gradient(-45deg, #0f2027, #072b4f, #0a6467);
+  --bg-player: #001523;
+  --font-song: #bdbdbd;
+  --font: #bdbdbd;
+  --progress-bg: #bdbdbd;
+  --progress-bar: #5a189a;
+  --buttons: #707577;
+  --sun: #707577;
+  --moon: #5a189a;
+  --switch: #707577;
+  --slider: #f4f3ee;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "League Spartan", sans-serif;
+  font-size: 12px;
+  color: var(--font);
+
+  /* Body Bakground */
+  background: var(--bg-page);
+  background-size: 300% 300%;
+  animation: gradient 7s ease infinite;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.player-container {
+  height: 500px;
+  width: 400px;
+  background: var(--bg-player);
+  border-radius: 20px;
+  box-shadow: var(--player-shadow);
+}
+
+.img-container {
+  width: 75%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.img-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: var(--image-shadow);
+  user-select: none;
+}
+
+h2 {
+  font-size: 25px;
+  text-align: center;
+  margin: 0;
+  color: var(--font-song);
+}
+
+h3 {
+  font-size: 20px;
+  text-align: center;
+  font-weight: 400;
+  margin: 5px 0 0;
+}
+
+/* Progress */
+.progress-container {
+  background: var(--progress-bg);
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 40px 20px;
+  height: 6px;
+  width: 90%;
+}
+
+.progress {
+  background: var(--progress-bar);
+  border-radius: 5px;
+  height: 100%;
+  /* change this to show progress */
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.duration-wrapper {
+  position: relative;
+  top: -25px;
+  display: flex;
+  justify-content: space-between;
+  user-select: none;
+}
+
+/* Controls */
+.player-controls {
+  position: relative;
+  width: 160px;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fa-solid {
+  font-size: 25px;
+  color: var(--buttons);
+  cursor: pointer;
+  user-select: none;
+}
+
+.fa-solid:hover {
+  filter: brightness(70%);
+}
+
+.main-button {
+  font-size: 40px;
+  position: relative;
+  margin: 0 30px;
+}
+
+/* Light / Dark Mode Controls */
+
+.mode-wrapper {
+  margin-top: 40px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mode-wrapper .fa-solid {
+  font-size: 20px;
+}
+
+.fa-sun {
+  color: var(--sun);
+}
+
+.fa-moon {
+  color: var(--moon);
+}
+
+/* The switch - the box around the slider */
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--switch);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background: var(--slider);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px black;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(19px);
+  -ms-transform: translateX(19px);
+  transform: translateX(19px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Media Query: iPhone (Vertical) */
+@media screen and (max-width: 440px) {
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 15px;
+  }
+
+  .player-container {
+    width: 90vw;
+  }
+
+  .player-controls {
+    top: -10px;
+  }
+}
