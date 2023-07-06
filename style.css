@@ -29,7 +29,7 @@
 /* Variables - Dark Mode */
 
 [data-theme="dark"] {
-  --bg-page: linear-gradient(-45deg, #0f2027, #072b4f, #0a6467);
+  --bg-page: linear-gradient(-45deg, #003226, #0f2027, #072b4f, #0a6467);
   --bg-player: #001523;
   --font-song: #bdbdbd;
   --font: #bdbdbd;
