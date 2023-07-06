@@ -30,7 +30,7 @@
 
 [data-theme="dark"] {
   --bg-page: linear-gradient(-45deg, #003226, #0f2027, #072b4f, #0a6467);
-  --bg-player: #001523;
+  --bg-player: #101010;
   --font-song: #bdbdbd;
   --font: #bdbdbd;
   --progress-bg: #bdbdbd;
